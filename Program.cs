@@ -102,4 +102,48 @@ int[] array2 = FindMultiPair(array1);
 ShowArray(array2);
 */
 
-//
+//Задайте одномерный массив из 123 случайных чисел.
+//Найдите ко-во элементов массива, значения которых лежат в отрезке [10, 99].
+
+int [] CreateRandomArray (int size, int minValue, int maxValue)   //метод создания массива с рандом эл-ами
+{
+    int[] newArray = new int [size];
+
+    for (int i = 0; i < size; i++)
+        newArray[i] = new Random().Next(minValue, maxValue +1);
+    return newArray;
+}
+
+void ShowArray (int [] array)     // метод демонстрации массива
+{
+    for(int i = 0; i < array.Length; i++)
+        Console.Write(array[i] + " ");
+    Console.WriteLine();
+}
+
+int CountNext(int[] array)
+{
+    int count = 0;
+    for (int i = 0; i < array.Length; i++)
+        if (array[i] > 9 && array[i] < 100)
+            count++;
+    return count;
+
+}
+
+Console.WriteLine("Input min possible val if array: ");
+int minVal = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input max possible val if array: ");
+int maxVal = Convert.ToInt32(Console.ReadLine());
+
+int sizeArray = 123;
+
+int[] arrayCreated = CreateRandomArray(sizeArray, minVal, maxVal);
+ShowArray(arrayCreated);
+
+int res = CountNext(arrayCreated);
+ShowArray(arrayCreated);
+Console.WriteLine($"Count of elements between 10 and 99 is {res} ");
+
+
+
